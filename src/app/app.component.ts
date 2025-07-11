@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
 
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
@@ -9,7 +8,7 @@ import { DUMMY_USERS } from './user/dummy-users';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, UserComponent, TaskComponent, NgIf],
+  imports: [HeaderComponent, UserComponent, TaskComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
