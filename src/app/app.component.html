@@ -10,5 +10,7 @@
       />
     </li>
   </ul>
-  <div class="user-details">DETAIL</div>
+  <div class="user-details">
+    <app-task [name]="selectedUser ? selectedUser.name : '-'" />
+  </div>
 </main>
