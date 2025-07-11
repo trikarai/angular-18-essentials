@@ -4,9 +4,13 @@ import { Component, Input } from '@angular/core';
   selector: 'app-task',
   standalone: true,
   imports: [],
-  templateUrl: './task.component.html',
-  styleUrl: './task.component.css',
+  templateUrl: './tasks.component.html',
+  styleUrl: './tasks.component.css',
 })
 export class TaskComponent {
   @Input() name: string | undefined;
+
+  onEditTask() {
+    throw new Error('Method not implemented.');
+  }
 }
