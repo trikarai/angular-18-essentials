@@ -8,10 +8,14 @@
     }
   </ul>
   <div class="user-details">
-    @if (selectedUser) {
+    <!-- @if (selectedUser) {
     <app-task [name]="selectedUser.name" />
     } @else {
     <p id="fallback">Select a user to see their tasks</p>
-    }
+    } -->
+    <app-task *ngIf="selectedUser; else falback" [name]="selectedUser.name" />
+    <ng-template #falback>
+      <p id="fallback">Select a user to see their tasks</p>
+    </ng-template>
   </div>
 </main>
