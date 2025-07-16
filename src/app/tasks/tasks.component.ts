@@ -1,16 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-
+import { NewTaskComponent } from './new-task/new-task.component';
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
   @Input({ required: true }) userId!: string | undefined;
   @Input({ required: true }) name!: string | undefined;
+
+  isAddingTask = false;
+
   tasks = [
     {
       id: 't1',
@@ -44,7 +47,7 @@ export class TasksComponent {
     console.log(`Task with ID ${taskId} completed and removed from the list.`);
   }
 
-  onEditTask() {
-    throw new Error('Method not implemented.');
+  onStartAddtask() {
+    this.isAddingTask = true;
   }
 }
