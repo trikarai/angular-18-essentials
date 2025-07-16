@@ -1,5 +1,7 @@
-import { Component, Output, EventEmitter, signal } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+import { NewTaskData } from '../task/task.model';
 
 @Component({
   selector: 'app-new-task',
@@ -9,16 +11,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-task.component.css',
 })
 export class NewTaskComponent {
-  @Output() taskAdded = new EventEmitter<{
-    title: string;
-    dueDate: string;
-    summary: string;
-  }>();
+  @Output() addTask = new EventEmitter<NewTaskData>();
   @Output() cancel = new EventEmitter<void>();
 
-  enteredTitle = signal('');
-  enteredSummary = signal('');
-  enteredDueDate = signal('');
+  enteredTitle = '';
+  enteredSummary = '';
+  enteredDueDate = '';
 
   onCancel() {
     this.cancel.emit();
@@ -26,13 +24,13 @@ export class NewTaskComponent {
 
   onCreateTask() {
     const taskData = {
-      title: this.enteredTitle(),
-      dueDate: this.enteredDueDate(),
-      summary: this.enteredSummary(),
+      title: this.enteredTitle,
+      dueDate: this.enteredDueDate,
+      summary: this.enteredSummary,
     };
-    this.taskAdded.emit(taskData);
-    this.enteredTitle = signal('');
-    this.enteredSummary = signal('');
-    this.enteredDueDate = signal('');
+    this.addTask.emit(taskData);
+    this.enteredTitle = '';
+    this.enteredSummary = '';
+    this.enteredDueDate = '';
   }
 }
