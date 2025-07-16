@@ -1,5 +1,9 @@
 <div>
-  <button (click)="onSelectUser()" class="user-button">
+  <button
+    [class.active]="selected"
+    (click)="onSelectUser()"
+    class="user-button"
+  >
     <img [src]="imagePath" [alt]="user.name" />
     <h4>{{ user.name }}</h4>
   </button>
