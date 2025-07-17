@@ -27,6 +27,13 @@ export class TasksService {
     },
   ]; // Example task array
 
+  constructor() {
+    const tasks = localStorage.getItem('tasks');
+    if (tasks) {
+      this.tasks = JSON.parse(tasks);
+    }
+  }
+
   getUserTasks(userId: string) {
     return this.tasks.filter((task) => task.userId === userId);
   }
@@ -39,14 +46,16 @@ export class TasksService {
     };
     this.tasks.unshift(newTask);
     console.log(`New task added for user ${userId}:`, newTask);
+    this.saveTasks();
   }
 
   removeTask(taskId: string) {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
     console.log(`Task with ID ${taskId} completed and removed from the list.`);
+    this.saveTasks();
   }
 
-  cancelAddTask() {
-    console.log('Task addition cancelled.');
+  private saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }
