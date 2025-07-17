@@ -58,17 +58,7 @@ export class TasksComponent {
     this.isAddingTask = true;
   }
 
-  onCancelAddTask() {
-    this.isAddingTask = false;
-  }
-
-  onAddTask(taskData: NewTaskData) {
-    const newTask = {
-      id: new Date().getTime().toString(),
-      userId: this.userId,
-      ...taskData,
-    };
-    this.tasks.unshift(newTask);
+  onCloseAddTask() {
     this.isAddingTask = false;
   }
 }
