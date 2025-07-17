@@ -14,7 +14,7 @@
     @for (task of selectedUserTasks; track $index) {
     <li>
       <!-- Use the TaskComponent to display each task -->
-      <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+      <app-task [task]="task"></app-task>
     </li>
     }
   </ul>
